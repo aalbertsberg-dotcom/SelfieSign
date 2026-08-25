@@ -76,5 +76,18 @@ GitHub Pages is the shareable front-end preview. It uses browser-local storage b
 Flash Station is production-facing UI, not a placeholder experience. On localhost or HTTPS it requests the real front-facing camera. No stock fallback image is shown. If permission is blocked, the station displays an explicit camera-permission state. The kiosk flow is a quick selfie, optional phone number, then automatic reset. SMS delivery remains a backend integration.
 
 
-## v13
+## v14
 The products page now leads with the finished Ink & Flash keepsake book. Book Studio can include approved signature/selfie pairs plus Flash Share and Flash Station photos, with interleaved or end-of-book event photo sections.
+
+
+## v14
+- Ink & Flash logo/wordmark is a Home link on every page where the brand mark appears, including guest-facing Flash Share and selfie pages.
+
+
+## v15 navigation + book customizer
+- Products remains the main catalog for finished Keepsake Books, signing pieces, Flash Share and Flash Station.
+- Book Studio now supports Hardcover, Layflat, Premium Layflat and Softcover product types with compatible sizes, covers and page finishes.
+- Layout choice is per matched memory rather than forcing one layout across the whole book.
+- The cover is always customizable even before approved event memories exist.
+- `PUBLISH-GITHUB.bat` now validates internal links/files before committing and pushing.
+- `UPDATE-AND-PUBLISH.bat` is a convenience alias for the same update/push workflow.

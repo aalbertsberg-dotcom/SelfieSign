@@ -1,25 +1,117 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Book Studio | Ink & Flash</title><link rel="icon" href="assets/img/favicon.svg"><link rel="stylesheet" href="assets/css/style.css"></head>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Customize Your Keepsake Book | Ink & Flash</title>
+<meta name="description" content="Customize your Ink & Flash Keepsake Book with real signatures, matched selfies, Flash Share photos and Flash Station moments.">
+<link rel="icon" href="assets/img/favicon.svg"><link rel="stylesheet" href="assets/css/style.css">
+</head>
 <body class="book-studio-page">
-<nav class="nav"><div class="shell nav-inner"><a class="brand" href="index.html"><img class="brand-mark" src="assets/img/favicon.svg" alt=""><span>Ink & Flash</span></a><div class="nav-links"><a href="products.html#keepsakes">Books</a><a href="dashboard.html">Dashboard</a><a href="review.html">Review & pair</a><a href="signature-import.html">Capture signatures</a></div></div></nav>
-<main class="book-studio-shell">
-  <div class="book-studio-head"><div><div class="eyebrow">KEEPSAKE BOOK STUDIO</div><h1>Turn the whole event into the book.</h1><p>Matched signatures and selfies form the story. Pull in favorite Flash Share uploads and Flash Station photos wherever you want them.</p></div><div class="book-head-actions"><button id="autoBuild" class="btn light">Auto-build book</button><button id="printBook" class="btn">Print / Save full PDF</button></div></div>
+<nav class="nav"><div class="shell nav-inner">
+  <a class="brand" href="index.html"><img class="brand-mark" src="assets/img/favicon.svg" alt=""><span>Ink & Flash</span></a>
+  <div class="nav-links"><a href="products.html">Products</a><a href="dashboard.html">My event</a><a href="review.html">Review & pair</a><a href="signature-import.html">Capture signatures</a></div>
+</div></nav>
+
+<main class="book-studio-shell v15-book-studio">
+  <div class="book-breadcrumb"><a href="products.html">Products</a><span>›</span><a href="products.html#keepsakes">Keepsake Books</a><span>›</span><b>Customize</b></div>
+  <div class="book-studio-head">
+    <div><div class="eyebrow">KEEPSAKE BOOK STUDIO</div><h1>Build the book your way.</h1><p>Start with the physical book you want, then choose what goes inside. Your approved signature + selfie pairs stay matched while you add event photos, change layouts and customize every spread.</p></div>
+    <div class="book-head-actions"><button id="autoBuild" class="btn light">Auto-layout my memories</button><button id="printBook" class="btn">Print / Save full PDF</button></div>
+  </div>
+
+  <section class="book-product-picker panel" aria-label="Choose book type">
+    <div class="book-picker-title"><div><span class="step-kicker">1 · BOOK TYPE</span><h2>Choose the physical book.</h2></div><a href="products.html#book-types">Compare book types</a></div>
+    <div class="book-product-tabs" data-option-group="product">
+      <button class="book-product-tab active" data-value="hardcover"><span class="book-mini hard"></span><b>Hardcover</b><small>Classic everyday keepsake</small></button>
+      <button class="book-product-tab" data-value="layflat"><span class="book-mini layflat"></span><b>Layflat</b><small>Pages open nearly flat</small></button>
+      <button class="book-product-tab" data-value="premium"><span class="book-mini premium"></span><b>Premium Layflat</b><small>Thicker pages + premium covers</small></button>
+      <button class="book-product-tab" data-value="softcover"><span class="book-mini soft"></span><b>Softcover</b><small>Lightweight extra copy</small></button>
+    </div>
+  </section>
+
   <div class="book-studio-grid">
-    <aside class="book-filmstrip-panel panel"><div class="filmstrip-head"><b>Book memories</b><span id="memoryCount">0</span></div><div id="bookFilmstrip" class="book-filmstrip"></div></aside>
-    <section class="book-canvas-wrap"><div class="book-canvas-toolbar"><button id="prev" class="btn light small">←</button><span id="counter" class="slot-chip">0 / 0</span><button id="next" class="btn light small">→</button><span class="book-edit-note">Preview one spread at a time. PDF includes the entire book.</span></div><div id="stage" class="book-stage studio-stage" data-layout="signature" data-theme="classic" data-size="10"></div></section>
+    <aside class="book-filmstrip-panel panel">
+      <div class="filmstrip-head"><b>Book pages</b><span id="memoryCount">0</span></div>
+      <div id="bookFilmstrip" class="book-filmstrip"></div>
+      <a class="filmstrip-add" href="review.html"><b>＋ Add / approve memories</b><small>Review signatures, selfies and event photos</small></a>
+    </aside>
+
+    <section class="book-canvas-wrap">
+      <div class="book-canvas-toolbar">
+        <button id="prev" class="btn light small" aria-label="Previous spread">←</button>
+        <span id="counter" class="slot-chip">Cover</span>
+        <button id="next" class="btn light small" aria-label="Next spread">→</button>
+        <span id="currentPageType" class="book-edit-note">Front cover</span>
+      </div>
+      <div id="stage" class="book-stage studio-stage" data-layout="signature" data-theme="classic" data-size="10x10"></div>
+      <div class="book-canvas-help"><span>Tip</span> Click a page thumbnail on the left, then change that spread’s layout on the right. Cover and physical book settings apply to the whole book.</div>
+    </section>
+
     <aside class="book-studio-controls panel">
-      <div class="studio-section"><div class="studio-section-title"><b>What goes in</b><small>Choose the memories in this book</small></div><div class="book-source-summary">
+      <div class="studio-section">
+        <div class="studio-section-title"><b>Book details</b><small id="productHelp">Hardcover · versatile and durable</small></div>
+        <div class="field"><label>Size</label><select id="bookSize"></select></div>
+        <div class="field"><label>Cover</label><select id="bookCover"></select></div>
+        <div class="field"><label>Page type</label><select id="pageType"></select></div>
+      </div>
+
+      <div class="studio-section">
+        <div class="studio-section-title"><b>Cover personalization</b><small>Front cover</small></div>
+        <div class="field"><label>Title</label><input id="coverTitle" value="Our Guest Book"></div>
+        <div class="field"><label>Subtitle</label><input id="coverSubtitle" placeholder="Mia & Jordan · October 18, 2026"></div>
+        <div id="coverSwatch" class="cover-preview"><span>INK & FLASH</span><b>OUR GUEST BOOK</b><small></small></div>
+      </div>
+
+      <div class="studio-section">
+        <div class="studio-section-title"><b>Design style</b><small>Applies across the book</small></div>
+        <div class="style-choice-grid" data-option-group="theme">
+          <button class="style-choice active" data-value="classic">Classic</button><button class="style-choice" data-value="modern">Modern</button><button class="style-choice" data-value="editorial">Editorial</button><button class="style-choice" data-value="film">Film</button>
+        </div>
+      </div>
+
+      <div class="studio-section" id="spreadLayoutSection">
+        <div class="studio-section-title"><b>Current spread layout</b><small id="spreadLayoutHelp">Change only this memory</small></div>
+        <div class="layout-choice-list" data-option-group="layout">
+          <button class="layout-choice active" data-value="signature"><i>◫</i><span><b>Selfie + signature</b><small>Clean handwriting beside the chosen photo</small></span></button>
+          <button class="layout-choice" data-value="card"><i>▤</i><span><b>Selfie + full signed card</b><small>Preserve the complete returned card</small></span></button>
+          <button class="layout-choice" data-value="full"><i>▣</i><span><b>Full-photo spread</b><small>Large image with handwriting treatment</small></span></button>
+          <button class="layout-choice" data-value="gallery"><i>▦</i><span><b>Photo gallery</b><small>Use up to 3 photos from this entry</small></span></button>
+        </div>
+      </div>
+
+      <div class="studio-section">
+        <div class="studio-section-title"><b>What goes in</b><small>Book contents</small></div>
         <div class="setting-card dark-setting locked-source"><span><b>Matched signatures + selfies</b><small>Your approved Ink & Flash memories</small></span><span class="source-lock">CORE</span></div>
-        <div class="setting-card dark-setting"><span><b>Flash Share + Station photos</b><small>Add approved event photos as gallery pages</small></span><label class="switch"><input id="includeEventPhotos" type="checkbox" checked><i></i></label></div>
-      </div><div class="field shared-placement"><label>Event photo placement</label><select id="eventPhotoPlacement"><option value="interleave">Mix between signature memories</option><option value="after">Photo section after signatures</option></select></div></div>
-      <div class="studio-section"><div class="studio-section-title"><b>Book</b><small>Size and cover</small></div><label>Size</label><div class="option-row three" data-option-group="size"><button class="option" data-value="8">8×8</button><button class="option active" data-value="10">10×10</button><button class="option" data-value="12">12×12</button></div><label>Cover</label><div class="cover-choice-grid" data-option-group="cover"><button class="cover-choice active" data-value="linen"><i class="linen"></i><span>Linen</span></button><button class="cover-choice" data-value="leather"><i class="leather"></i><span>Leather</span></button><button class="cover-choice" data-value="photo"><i class="photo"></i><span>Photo</span></button><button class="cover-choice" data-value="velvet"><i class="velvet"></i><span>Velvet</span></button></div></div>
-      <div class="studio-section"><div class="studio-section-title"><b>Cover text</b><small>Front cover personalization</small></div><div class="field"><label>Title</label><input id="coverTitle" value="Our Guest Book"></div><div class="field"><label>Subtitle</label><input id="coverSubtitle" placeholder="Mia & Jordan · October 18, 2026"></div><div id="coverSwatch" class="cover-preview"><span>INK & FLASH</span><b>OUR GUEST BOOK</b><small></small></div></div>
-      <div class="studio-section"><div class="studio-section-title"><b>Design style</b><small>Applies across the whole book</small></div><div class="style-choice-grid" data-option-group="theme"><button class="style-choice active" data-value="classic">Classic</button><button class="style-choice" data-value="modern">Modern</button><button class="style-choice" data-value="editorial">Editorial</button><button class="style-choice" data-value="film">Film</button></div></div>
-      <div class="studio-section"><div class="studio-section-title"><b>Signature spread layout</b><small>How paired memories appear</small></div><div class="layout-choice-list" data-option-group="layout"><button class="layout-choice active" data-value="signature"><i>◫</i><span><b>Selfie + signature</b><small>Clean handwriting beside the photo</small></span></button><button class="layout-choice" data-value="card"><i>▤</i><span><b>Selfie + full card</b><small>Keep the signed card exactly as captured</small></span></button><button class="layout-choice" data-value="full"><i>▣</i><span><b>Full photo</b><small>Big selfie with handwriting overlay</small></span></button><button class="layout-choice" data-value="gallery"><i>▦</i><span><b>Guest photo gallery</b><small>Use up to 3 photos from that signature entry</small></span></button></div></div>
-      <div class="studio-section compact"><div class="setting-card dark-setting"><span><b>Guest message</b><small>Show their written message in paired spreads</small></span><label class="switch"><input id="includeMessage" type="checkbox" checked><i></i></label></div><div class="setting-card dark-setting"><span><b>Extra signature-entry photos</b><small>Use additional selfies in guest gallery layouts</small></span><label class="switch"><input id="includeExtras" type="checkbox" checked><i></i></label></div></div>
-      <div class="studio-section"><div class="studio-section-title"><b>Order</b><small>Finish the physical book</small></div><div class="form-two"><div class="field"><label>Copies</label><select id="copies"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div><div class="field"><label>Paper</label><select id="paper"><option>Premium matte</option><option>Lustre photo</option><option>Heavy uncoated</option></select></div></div><button id="orderBook" class="btn full">Review & order printed book →</button></div>
+        <div class="setting-card dark-setting"><span><b>Flash Share + Station photos</b><small>Add approved event photos as gallery spreads</small></span><label class="switch"><input id="includeEventPhotos" type="checkbox" checked><i></i></label></div>
+        <div class="field shared-placement"><label>Event photo placement</label><select id="eventPhotoPlacement"><option value="interleave">Mix between signature memories</option><option value="after">Photo section after signatures</option></select></div>
+        <div class="setting-card dark-setting"><span><b>Guest messages</b><small>Show the message submitted with a matched memory</small></span><label class="switch"><input id="includeMessage" type="checkbox" checked><i></i></label></div>
+        <div class="setting-card dark-setting"><span><b>Extra guest photos</b><small>Use additional submitted selfies in gallery layouts</small></span><label class="switch"><input id="includeExtras" type="checkbox" checked><i></i></label></div>
+      </div>
+
+      <div class="studio-section">
+        <div class="studio-section-title"><b>Order</b><small>Final book</small></div>
+        <div class="form-two"><div class="field"><label>Copies</label><select id="copies"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div><div class="field"><label>Page count</label><select id="pageCount"><option>20</option><option>30</option><option>40</option><option>50</option><option>60</option><option>80</option></select></div></div>
+        <button id="orderBook" class="btn full">Review book details →</button>
+      </div>
     </aside>
   </div>
+
+  <section class="book-bottom-summary panel">
+    <div><span>YOUR BOOK</span><b id="summaryProduct">Hardcover · 10×10</b><small id="summaryDetails">Matte photo cover · Premium matte pages · 1 copy</small></div>
+    <div class="book-bottom-actions"><a class="btn light" href="products.html">Back to products</a><button id="reviewOrderBottom" class="btn">Review book details →</button></div>
+  </section>
 </main>
-<div id="printBookPages" class="print-book-pages"></div><div class="toast" id="toast"></div><script src="assets/js/core.js"></script><script src="assets/js/book.js"></script></body></html>
+
+<div id="orderModal" class="modal-backdrop" hidden>
+  <div class="order-modal panel" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+    <button id="closeOrder" class="modal-close" aria-label="Close">×</button>
+    <div class="eyebrow">REVIEW YOUR BOOK</div><h2 id="orderModalTitle">Everything in one place.</h2>
+    <div id="orderSummary" class="order-summary"></div>
+    <div class="order-modal-actions"><button id="backToEdit" class="btn light">Keep editing</button><button id="continueCheckout" class="btn">Continue to checkout →</button></div>
+    <small class="backend-note">Checkout and print-fulfillment connection are the remaining backend step.</small>
+  </div>
+</div>
+
+<div id="printBookPages" class="print-book-pages"></div><div class="toast" id="toast"></div>
+<script src="assets/js/core.js"></script><script src="assets/js/book.js"></script>
+</body></html>

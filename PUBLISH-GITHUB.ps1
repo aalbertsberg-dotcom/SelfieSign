@@ -13,6 +13,10 @@ if (-not (Test-Path .git)) {
     git branch -M main
 }
 
+Write-Host "Checking site links and files..." -ForegroundColor Cyan
+python .\scripts\check-site.py
+if ($LASTEXITCODE -ne 0) { throw "Site check failed. Fix the reported link/file before publishing." }
+
 Write-Host "Preparing public QR codes..." -ForegroundColor Cyan
 python .\scripts\generate-public-qrs.py
 if ($LASTEXITCODE -ne 0) { throw "Could not generate public QR codes." }
