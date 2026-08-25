@@ -85,10 +85,10 @@ $('boothCapture').onclick=async()=>{
   captured=canvas.toDataURL('image/jpeg',.9);canvas.hidden=false;video.hidden=true;showResult();$('boothCapture').disabled=false;
 };
 function reset(){
-  clearTimeout(resetTimer);captured=null;canvas.hidden=true;$('boothThanks').hidden=true;$('boothPhone').value='';$('boothSend').textContent='Done · next guest →';showReady();
+  clearTimeout(resetTimer);captured=null;canvas.hidden=true;$('boothThanks').hidden=true;$('boothPhone').value='';$('boothSend').textContent='Done';showReady();
   if(stream){video.hidden=false;video.play().then(cameraLive).catch(()=>startCamera())}else startCamera();
 }
-$('boothPhone').addEventListener('input',e=>{e.target.value=formatPhone(e.target.value);$('boothSend').textContent=digits(e.target.value)?'Text it & done →':'Done · next guest →'});
+$('boothPhone').addEventListener('input',e=>{e.target.value=formatPhone(e.target.value);$('boothSend').textContent=digits(e.target.value)?'Text my photo':'Done'});
 $('boothPhone').addEventListener('keydown',e=>{if(e.key==='Enter')$('boothSend').click()});
 $('boothSend').onclick=async()=>{
   if(!captured)return SSS.toast('Take a selfie first');
@@ -96,7 +96,7 @@ $('boothSend').onclick=async()=>{
   const entries=await SSS.getEntries(),slot=SSS.nextGallerySlot(entries);
   await SSS.upsertEntry({kind:'gallery',slot,names:'Flash Station',message:'',selfies:[captured],primarySelfie:0,filter:currentFilter,phone,albumOptIn:Boolean(phone)&&settings.smsAlbum!==false,source:'kiosk',reviewStatus:settings.wallModeration?'pending':'approved'});
   canvas.hidden=true;hideControls();$('boothThanks').hidden=false;
-  $('boothThanksText').textContent=phone?'Saved. Your copy will be sent when photo delivery is connected. Next guest, you’re up.':'Saved to the event. Next guest, you’re up.';
+  $('boothThanksText').textContent=phone?'Your photo is saved. Your copy will be sent when photo delivery is connected.':'Your photo is saved.';
   resetTimer=setTimeout(reset,1700);
 };
 window.addEventListener('pagehide',stopStream);
@@ -104,7 +104,6 @@ window.addEventListener('pagehide',stopStream);
   // Clean up legacy preview URLs without changing the event itself.
   const url=new URL(location.href);if(url.searchParams.get('event')==='demo'){url.searchParams.delete('event');history.replaceState({},'',url.pathname+(url.search||'')+url.hash)}
   settings=await SSS.getSettings();currentFilter=settings.kioskLook||'Glam';if(!filterMap[currentFilter])currentFilter='Glam';
-  $('boothThemeName').textContent=themeNames[currentFilter]||'Party glow';
   $('boothPhoneHelp').textContent=settings.smsAlbum!==false?'Optional — enter it to receive this photo and, when enabled, the event album link.':'Optional — enter it if you want this photo sent to you.';
   apply();showReady();await startCamera();
 })();

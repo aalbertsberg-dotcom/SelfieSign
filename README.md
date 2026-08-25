@@ -56,7 +56,7 @@ A starter Supabase schema remains under `supabase/schema.sql`.
 
 
 ## Kiosk flow
-The kiosk is intentionally fast: one selfie per turn → optional mobile number → save/text → auto-reset for the next guest. There is no retake screen. If someone wants another photo, they take another turn. The event owner selects one kiosk look in event setup; guests never choose filters or modes.
+The kiosk is intentionally simple: selfie → optional mobile number → save/text → automatic reset. There is no retake screen or guest filter menu. The event owner selects one kiosk look in event setup.
 
 ## GitHub Pages preview
 
@@ -73,4 +73,4 @@ GitHub Pages is the shareable front-end preview. It uses browser-local storage b
 
 ## v10 Flash Station behavior
 
-Flash Station is production-facing UI, not a placeholder experience. On localhost or HTTPS it requests the real front-facing camera. No stock fallback image is shown. If permission is blocked, the station displays an explicit camera-permission state. The kiosk flow is one photo per turn, optional phone number, then next guest. SMS delivery remains a backend integration.
+Flash Station is production-facing UI, not a placeholder experience. On localhost or HTTPS it requests the real front-facing camera. No stock fallback image is shown. If permission is blocked, the station displays an explicit camera-permission state. The kiosk flow is a quick selfie, optional phone number, then automatic reset. SMS delivery remains a backend integration.
