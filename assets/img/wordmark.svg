@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 120" role="img" aria-labelledby="title desc">
+  <title id="title">Ink &amp; Flash</title><desc id="desc">Transparent Ink &amp; Flash wordmark using the original signature and flash icon.</desc>
+  <g transform="translate(10 12)">
+    <path d="M7 72c24-52 55-64 75-44 17 17-15 38-34 28-16-8-3-24 17-14 31 15 24 48 61 38" fill="none" stroke="#f8f6fb" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="132" cy="19" r="9" fill="#ef725b"/>
+    <path d="M132 0v8M151 19h-8M145 6l-6 6" stroke="#ef725b" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#f8f6fb">
+    <text x="178" y="58" font-size="48" font-weight="800" letter-spacing="-1.6">Ink &amp; Flash</text>
+    <text x="180" y="91" font-size="17" fill="#ff76b7" letter-spacing="4">SIGN. SELFIE. SEND.</text>
+  </g>
+</svg>

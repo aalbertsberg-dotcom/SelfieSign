@@ -10,7 +10,7 @@ if errorlevel 1 (
   if errorlevel 1 goto failed
 )
 echo.
-echo Starting Sign. Selfie. Send...
+echo Starting Ink & Flash...
 python scripts\server.py --port 5500
 goto end
 :nopython

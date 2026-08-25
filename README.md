@@ -1,6 +1,13 @@
-# Sign. Selfie. Send.
+# Ink & Flash
 
-Local prototype / production-facing front end for the Sign. Selfie. Send. event guest-book product.
+Production-facing front end for Ink & Flash, the event memory brand behind “Sign. Selfie. Send.”
+
+
+## Brand
+
+**Ink & Flash**  
+*Sign. Selfie. Send.*  
+See `BRAND.md` for naming, product family, voice and colors.
 
 ## Start locally
 

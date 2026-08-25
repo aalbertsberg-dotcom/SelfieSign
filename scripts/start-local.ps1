@@ -16,5 +16,5 @@ if ($LASTEXITCODE -ne 0) {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 
-Write-Host "Starting Sign. Selfie. Send. on port 5500..." -ForegroundColor Green
+Write-Host "Starting Ink & Flash on port 5500..." -ForegroundColor Green
 python .\scripts\server.py --port 5500

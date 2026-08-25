@@ -83,7 +83,7 @@ def generate_qrs(base,slots=120):
 if __name__=='__main__':
     ap=argparse.ArgumentParser(); ap.add_argument('--port',type=int,default=5500); ap.add_argument('--host',default='0.0.0.0'); a=ap.parse_args()
     ip=lan_ip(); base=f'http://{ip}:{a.port}'; generate_qrs(base); os.chdir(ROOT)
-    print('\nSign. Selfie. Send. local site')
+    print('\nInk & Flash local site')
     print('Desktop: http://localhost:%s'%a.port)
     print('Phone:   %s'%base)
     print('QR cards and print templates now point to the phone URL above.\n')

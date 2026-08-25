@@ -1,4 +1,4 @@
--- Sign. Selfie. Send. production-oriented starting schema for Supabase/Postgres.
+-- Ink & Flash production-oriented starting schema for Supabase/Postgres.
 -- Authentication/RLS policies should be added before production use.
 
 create table if not exists public.events (

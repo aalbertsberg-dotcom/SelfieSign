@@ -20,16 +20,17 @@ if ($LASTEXITCODE -ne 0) { throw "Could not generate public QR codes." }
 git add .
 $changes = git status --porcelain
 if ($changes) {
-    git commit -m "Update SelfieSign website"
+    git commit -m "Update Ink & Flash website"
 } else {
     Write-Host "No new file changes to commit." -ForegroundColor Yellow
 }
 
-$origin = git remote get-url origin 2>$null
-if ($LASTEXITCODE -ne 0) {
+$remoteNames = @(git remote)
+if ($remoteNames -notcontains "origin") {
     git remote add origin $repo
-} elseif ($origin -ne $repo) {
-    git remote set-url origin $repo
+} else {
+    $origin = git remote get-url origin
+    if ($origin -ne $repo) { git remote set-url origin $repo }
 }
 
 git push -u origin main
