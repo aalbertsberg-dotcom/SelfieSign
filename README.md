@@ -64,3 +64,7 @@ Run `PUBLISH-GITHUB.bat` from the project folder after the empty GitHub reposito
 On the first push only, enable GitHub Pages in the repository: **Settings → Pages → Deploy from a branch → main → /(root)**.
 
 GitHub Pages is the shareable front-end preview. It uses browser-local storage because GitHub Pages cannot run the production API. Real cross-device events, SMS delivery, authentication and durable uploads remain backend work.
+
+## v10 Flash Station behavior
+
+Flash Station is production-facing UI, not a placeholder experience. On localhost or HTTPS it requests the real front-facing camera. No stock fallback image is shown. If permission is blocked, the station displays an explicit camera-permission state. The kiosk flow is one photo per turn, optional phone number, then next guest. SMS delivery remains a backend integration.

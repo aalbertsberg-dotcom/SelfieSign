@@ -27,7 +27,7 @@ def save_data_url(data,event,slot,kind):
     return f'data/uploads/{event}/{name}'
 
 def persist_media(entry):
-    event=entry.get('event','demo'); slot=entry.get('slot','000')
+    event=entry.get('event','current'); slot=entry.get('slot','000')
     selfies=entry.get('selfies')
     if isinstance(selfies,list):
         entry['selfies']=[save_data_url(v,event,slot,f'selfie-{i+1}') for i,v in enumerate(selfies)]
@@ -46,22 +46,22 @@ class Handler(SimpleHTTPRequestHandler):
         u=urlparse(self.path); q=parse_qs(u.query)
         if u.path=='/api/health': return self.send_json({'ok':True})
         if u.path=='/api/entries':
-            event=q.get('event',['demo'])[0]; return self.send_json([x for x in load_db() if x.get('event')==event])
+            event=q.get('event',['current'])[0]; return self.send_json([x for x in load_db() if x.get('event')==event])
         if u.path=='/api/event':
-            event=q.get('event',['demo'])[0]; events=load_events(); return self.send_json(events.get(event,{'eventId':event}))
+            event=q.get('event',['current'])[0]; events=load_events(); return self.send_json(events.get(event,{'eventId':event}))
         return super().do_GET()
     def do_POST(self):
         u=urlparse(self.path)
         try:
             n=int(self.headers.get('Content-Length','0')); payload=json.loads(self.rfile.read(n) or b'{}')
             if u.path=='/api/entries':
-                entry=persist_media(payload); event=entry.get('event','demo'); slot=entry.get('slot','000')
+                entry=persist_media(payload); event=entry.get('event','current'); slot=entry.get('slot','000')
                 db=load_db(); i=next((i for i,x in enumerate(db) if x.get('event')==event and x.get('slot')==slot),None)
                 if i is None: db.append(entry)
                 else: db[i].update(entry); entry=db[i]
                 save_db(db); return self.send_json(entry)
             if u.path=='/api/event':
-                event=payload.get('eventId') or payload.get('event') or 'demo'; events=load_events(); events[event]=payload; save_events(events); return self.send_json(payload)
+                event=payload.get('eventId') or payload.get('event') or 'current'; events=load_events(); events[event]=payload; save_events(events); return self.send_json(payload)
             return self.send_error(404)
         except Exception as e: return self.send_json({'error':str(e)},500)
 
@@ -77,8 +77,8 @@ def generate_qrs(base,slots=120):
         print('QR package missing. Run: python -m pip install -r requirements.txt'); return
     out=ROOT/'assets/qrs'; out.mkdir(parents=True,exist_ok=True)
     for n in range(1,slots+1):
-        slot=f'{n:03d}'; url=f'{base}/guest.html?event=demo&slot={slot}'; qrcode.make(url).save(out/f'slot-{slot}.png')
-    qrcode.make(f'{base}/share.html?event=demo').save(out/'event-share.png')
+        slot=f'{n:03d}'; url=f'{base}/guest.html?slot={slot}'; qrcode.make(url).save(out/f'slot-{slot}.png')
+    qrcode.make(f'{base}/share.html').save(out/'event-share.png')
 
 if __name__=='__main__':
     ap=argparse.ArgumentParser(); ap.add_argument('--port',type=int,default=5500); ap.add_argument('--host',default='0.0.0.0'); a=ap.parse_args()

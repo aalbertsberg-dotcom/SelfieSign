@@ -1,21 +1,71 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flash Station | Ink & Flash</title><link rel="icon" href="assets/img/favicon.svg"><link rel="stylesheet" href="assets/css/style.css"></head><body class="booth-body">
-<main class="booth-shell"><div class="booth-top"><a class="brand" href="index.html"><img class="brand-mark" src="assets/img/favicon.svg" alt=""><span>Ink & Flash</span></a><div class="booth-top-right"><span id="localSmsBadge" class="slot-chip" hidden>PREVIEW · TEXTING OFF</span><span class="slot-chip">FLASH STATION</span><a class="btn light small" href="dashboard.html">Exit</a></div></div>
-<div class="booth-ui"><section class="booth-camera"><video id="boothVideo" autoplay muted playsinline hidden></video><canvas id="boothCanvas" hidden></canvas><img id="boothFallback" src="assets/img/party-selfie-1.jpg" alt="Selfie station sample"><div id="countdown" class="countdown" hidden></div><div id="boothOverlay" class="booth-overlay"><div class="booth-start"><div class="ring">📸</div><div class="eyebrow">SELFIE STATION</div><h1>Tap to<br><span class="scribble">start.</span></h1><button id="startBooth" class="btn">Enable camera</button><p class="muted">One look. One photo per turn. Keep the line moving.</p></div></div><div id="boothThanks" class="booth-thanks" hidden><div class="sent-burst">✓</div><h2>Saved!</h2><p id="boothThanksText">Next guest, you’re up.</p><small class="kiosk-turn-note">Want another? Hop back in line for another turn.</small></div></section>
-<aside class="booth-controls">
-  <div id="boothReady" class="kiosk-simple-step">
-    <div class="eyebrow">1 · TAKE YOUR SELFIE</div>
-    <h2>Smile. That's it.</h2>
-    <p class="kiosk-simple-copy">No menus and no filter picking. This event already has its look.</p>
-    <div class="kiosk-theme-pill"><span>Tonight's look</span><b id="boothThemeName">Party glow</b></div>
-    <button id="boothCapture" class="booth-shutter" title="Take selfie" aria-label="Take selfie"></button>
-    <p class="kiosk-under-shutter">Tap the button when you're ready.</p>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Flash Station | Ink & Flash</title>
+<meta name="theme-color" content="#050407">
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="booth-body">
+<main class="booth-shell">
+  <div class="booth-top">
+    <a class="brand" href="index.html" aria-label="Ink & Flash home"><img class="brand-mark" src="assets/img/favicon.svg" alt=""><span>Ink & Flash</span></a>
+    <a class="btn light small" href="dashboard.html">Exit station</a>
   </div>
-  <div id="boothResult" class="booth-result" hidden>
-    <div class="eyebrow">2 · THAT’S YOUR SHOT</div>
-    <h2>Nice one.</h2>
-    <p class="kiosk-simple-copy">Want a copy? Add your number. Otherwise just tap done so the next guest can jump in.</p>
-    <div class="field kiosk-phone-field"><label>Mobile number <span class="optional-label">optional</span></label><input id="boothPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555"><div id="boothPhoneHelp" class="help">Leave it blank if you don’t want a text.</div></div>
-    <button id="boothSend" class="btn full">Done · next guest →</button>
-    <p class="kiosk-privacy-note">Your selfie is saved either way. If you enter a number, it is only used for this event’s photo delivery.</p>
+
+  <div class="booth-ui">
+    <section class="booth-camera" aria-label="Selfie camera">
+      <video id="boothVideo" autoplay muted playsinline></video>
+      <canvas id="boothCanvas" hidden></canvas>
+      <div id="countdown" class="countdown" hidden aria-live="assertive"></div>
+
+      <div id="cameraGate" class="camera-gate">
+        <div class="camera-gate-card">
+          <div class="camera-gate-icon">◎</div>
+          <div class="eyebrow">FLASH STATION</div>
+          <h1 id="cameraGateTitle">Starting camera…</h1>
+          <p id="cameraGateCopy">Allow camera access when your browser asks.</p>
+          <button id="startBooth" class="btn" type="button" hidden>Allow camera</button>
+        </div>
+      </div>
+
+      <div id="boothThanks" class="booth-thanks" hidden>
+        <div class="sent-burst">✓</div>
+        <h2>Saved!</h2>
+        <p id="boothThanksText">Next guest, you’re up.</p>
+        <small class="kiosk-turn-note">Want another? Hop back in line for another turn.</small>
+      </div>
+    </section>
+
+    <aside class="booth-controls">
+      <div id="boothReady" class="kiosk-simple-step">
+        <div class="eyebrow">TAKE YOUR SHOT</div>
+        <h2>Smile.<br>That's it.</h2>
+        <p class="kiosk-simple-copy">One photo per turn. The event look is already set.</p>
+        <div class="kiosk-theme-pill"><span>Event look</span><b id="boothThemeName">Party glow</b></div>
+        <button id="boothCapture" class="booth-shutter" type="button" title="Take selfie" aria-label="Take selfie" disabled></button>
+        <p id="cameraStatus" class="kiosk-under-shutter">Starting camera…</p>
+      </div>
+
+      <div id="boothResult" class="booth-result" hidden>
+        <div class="eyebrow">YOUR PHOTO IS SAVED</div>
+        <h2>Want a copy?</h2>
+        <p class="kiosk-simple-copy">Add your number if you want this photo texted to you. Otherwise, you're done.</p>
+        <div class="field kiosk-phone-field">
+          <label for="boothPhone">Mobile number <span class="optional-label">optional</span></label>
+          <input id="boothPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555">
+          <div id="boothPhoneHelp" class="help">Leave it blank if you don't want a text.</div>
+        </div>
+        <button id="boothSend" class="btn full" type="button">Done · next guest →</button>
+        <p class="kiosk-privacy-note">Your photo is saved to the event either way.</p>
+      </div>
+    </aside>
   </div>
-</aside></div></main><div class="toast" id="toast"></div><script src="assets/js/core.js"></script><script src="assets/js/booth.js"></script></body></html>
+</main>
+<div class="toast" id="toast"></div>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/booth.js"></script>
+</body>
+</html>

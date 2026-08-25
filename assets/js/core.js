@@ -1,13 +1,13 @@
 const SSS = (() => {
   const params = new URLSearchParams(location.search);
-  const EVENT_ID = params.get('event') || 'demo';
+  const EVENT_ID = params.get('event') || 'current';
   const API = '/api';
   const STATIC_ONLY = location.protocol === 'file:' || location.hostname.endsWith('github.io');
   const key = `sss_entries_${EVENT_ID}`;
   const settingsKey = `sss_event_${EVENT_ID}`;
   const defaultSettings = {
     eventId: EVENT_ID,
-    eventCode: EVENT_ID === 'demo' ? 'EVENT' : EVENT_ID.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,10),
+    eventCode: EVENT_ID === 'current' ? 'EVENT' : EVENT_ID.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,10),
     couple: 'Mia & Jordan',
     date: 'October 18, 2026',
     title: 'Our Guest Book',
@@ -101,7 +101,7 @@ const SSS = (() => {
   }
   async function seed(){
     const existing = await getEntries();
-    const demo = [
+    const starterEntries = [
       {kind:'signature',slot:'001',names:'Avery & Chris',message:'We love you both. Best night ever!',filter:'Warm',selfies:['assets/img/party-selfie-1.jpg','assets/img/phone-selfie.jpg'],primarySelfie:0,signature:'assets/img/sign-1.svg',reviewStatus:'approved'},
       {kind:'signature',slot:'002',names:'The Parkers',message:'Here’s to a lifetime of adventures.',filter:'Mono',selfies:['assets/img/party-selfie-2.jpg'],signature:'assets/img/sign-2.svg',reviewStatus:'approved'},
       {kind:'signature',slot:'003',names:'Taylor',message:'Could not be happier for you!',filter:'Film',selfies:['assets/img/phone-selfie.jpg'],signature:null,reviewStatus:'pending'},
@@ -110,7 +110,7 @@ const SSS = (() => {
       {kind:'gallery',slot:'G001',names:'Dance floor',message:'Caught this right before the song ended.',selfies:['assets/img/booth-action.jpg'],reviewStatus:'approved'},
       {kind:'gallery',slot:'G002',names:'Table 7',message:'Our point of view ✨',selfies:['assets/img/party-selfie-2.jpg'],reviewStatus:'approved'}
     ];
-    for (const d of demo) if (!existing.some(x => x.slot === d.slot)) await upsertEntry(d);
+    for (const d of starterEntries) if (!existing.some(x => x.slot === d.slot)) await upsertEntry(d);
     return await getEntries();
   }
   function slot(n){ return String(n).padStart(3,'0'); }
