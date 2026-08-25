@@ -10,18 +10,22 @@
   </section>
 
   <section class="builder-step"><div class="builder-step-head"><span>2</span><div><h2>How will people sign?</h2><p>The QR format can change later without changing the event.</p></div></div>
-    <div class="choice-cards" id="signatureChoices">
-      <label class="choice-card"><input type="radio" name="signatureProduct" value="print"><span class="choice-icon">▦</span><b>Ink Sheets · print at home</b><span>Sheets, lines, cards or stickers from your printer.</span></label>
-      <label class="choice-card"><input type="radio" name="signatureProduct" value="cards" checked><span class="choice-icon">▤</span><b>Ink Cards</b><span>Guests sign, scan, then drop the signed card back in.</span></label>
-      <label class="choice-card"><input type="radio" name="signatureProduct" value="book"><span class="choice-icon">▥</span><b>Ink Book</b><span>Numbered QR signing spaces already in the book.</span></label>
+    <div class="choice-cards signature-choice-cards" id="signatureChoices">
+      <label class="choice-card"><input type="radio" name="signatureProduct" value="print"><span class="choice-icon">▦</span><span class="choice-state">Choose</span><b>Ink Sheets</b><span>Print boxes, lines, cards or QR stickers at home.</span></label>
+      <label class="choice-card"><input type="radio" name="signatureProduct" value="cards" checked><span class="choice-icon">▤</span><span class="choice-state">Choose</span><b>Ink Cards</b><span>Guests sign, scan, then drop the original card back in.</span></label>
+      <label class="choice-card"><input type="radio" name="signatureProduct" value="book"><span class="choice-icon">▥</span><span class="choice-state">Choose</span><b>Ink Book</b><span>QR signing spaces are already printed into the guest book.</span></label>
     </div>
     <div class="builder-callout"><b>Keep the original ink.</b><span>Loose cards are always collected after guests scan them. After the event, you scan the returned cards, sheets or book pages into their matching slots.</span></div>
     <div class="form-two compact-row"><div class="field"><label>Signature spots</label><select id="slots"><option>24</option><option selected>48</option><option>72</option><option>96</option><option>120</option></select></div><div class="field"><label>Default printable format</label><select id="printFormat"><option value="boxes">4 large boxes / sheet</option><option value="lines">6 signature lines / sheet</option><option value="business">Business cards</option><option value="labels">QR sticker labels</option><option value="deck" selected>Deck cards</option><option value="fourbysix">4×6 cards</option></select></div></div>
   </section>
 
-  <section class="builder-step"><div class="builder-step-head"><span>3</span><div><h2>Guest selfie</h2><p>Fast by default. Extra photos are there only if guests want them.</p></div></div>
-    <div class="form-two"><div class="field"><label>Saved photos per signature</label><select id="photoLimit"><option value="1">1 photo</option><option value="2">Up to 2 photos</option><option value="3" selected>Up to 3 photos</option></select><div class="help">Retakes are always unlimited before sending.</div></div><div class="toggle-field"><span><b>Photo filters</b><small>Natural, warm, B&W, film and pop</small></span><label class="switch"><input id="filters" type="checkbox" checked><i></i></label></div></div>
-    <div class="form-two"><div class="toggle-field"><span><b>Guest message</b><small>Optional note with the selfie</small></span><label class="switch"><input id="messages" type="checkbox" checked><i></i></label></div><div class="toggle-field"><span><b>Signature backup photo</b><small>Optional rear-camera snap of the signed card</small></span><label class="switch"><input id="signatureBackup" type="checkbox"><i></i></label></div></div>
+  <section class="builder-step"><div class="builder-step-head"><span>3</span><div><h2>Guest selfie</h2><p>Keep the QR flow quick, with a few optional extras.</p></div></div>
+    <div class="guest-selfie-grid">
+      <div class="setting-card select-setting"><span><b>Photos they can keep</b><small>One is enough. Let them add extras if they want.</small></span><select id="photoLimit"><option value="1">1 photo</option><option value="2">Up to 2</option><option value="3" selected>Up to 3</option></select><em>They can retake before submitting.</em></div>
+      <div class="setting-card"><span><b>Photo filters</b><small>Natural, warm, B&W, film and pop</small></span><label class="switch"><input id="filters" type="checkbox" checked><i></i></label></div>
+      <div class="setting-card"><span><b>Guest message</b><small>Optional note that stays with the selfie</small></span><label class="switch"><input id="messages" type="checkbox" checked><i></i></label></div>
+      <div class="setting-card"><span><b>Signature backup photo</b><small>Optional phone photo of the signed card as a backup</small></span><label class="switch"><input id="signatureBackup" type="checkbox"><i></i></label></div>
+    </div>
   </section>
 
   <section class="builder-step"><div class="builder-step-head"><span>4</span><div><h2>Flash Share</h2><p>One event-wide QR for everyone’s camera roll.</p></div></div>
@@ -36,8 +40,17 @@
     <div id="smsAlbumWrap" class="toggle-field" hidden><span><b>Text the album later</b><small>Guests who leave a number can also get the event album link when you publish it.</small></span><label class="switch"><input id="smsAlbum" type="checkbox" checked><i></i></label></div>
   </section>
 
-  <section class="builder-step"><div class="builder-step-head"><span>6</span><div><h2>Album, wall & review</h2><p>You stay in control of what becomes visible or printed.</p></div></div>
-    <div class="form-two"><div class="toggle-field"><span><b>Live photo wall</b><small>Show approved selfies and event uploads</small></span><label class="switch"><input id="liveWall" type="checkbox" checked><i></i></label></div><div class="field"><label>Album access</label><select id="albumPrivacy"><option value="private-link">Private link</option><option value="pin">Private link + PIN</option><option value="published">Open after I publish it</option></select></div></div>
+  <section class="builder-step"><div class="builder-step-head"><span>6</span><div><h2>Album, wall & review</h2><p>Nothing becomes visible to guests until you decide it is ready.</p></div></div>
+    <div class="album-publish-note"><span>1</span><div><b>The album starts hidden.</b><small>Review photos first. When you press Publish from the dashboard, the album becomes available using the access method below.</small></div></div>
+    <div class="album-settings-grid">
+      <div class="setting-card"><span><b>Live photo wall</b><small>Show only photos you approve during the event</small></span><label class="switch"><input id="liveWall" type="checkbox" checked><i></i></label></div>
+      <div class="album-access-box"><div class="setting-title"><b>After you publish, who can open the album?</b><small>This controls access to the finished online gallery.</small></div>
+        <div class="album-access-choices">
+          <label><input type="radio" name="albumPrivacy" value="private-link" checked><span><b>Anyone with the private link</b><small>Fastest for guests. The album is not listed publicly.</small></span><i>Recommended</i></label>
+          <label><input type="radio" name="albumPrivacy" value="pin"><span><b>Private link + PIN</b><small>Guests need both the album link and your PIN.</small></span><i>More private</i></label>
+        </div>
+      </div>
+    </div>
     <div class="owner-features"><span>Choose the book photo from up to 3</span><span>Swap selfies between signature slots</span><span>Swap scanned signatures between slots</span><span>Moderate event-wide uploads</span><span>Hide anything from the wall or book</span><span>Publish the album when you are ready</span></div>
   </section>
 

@@ -44,7 +44,7 @@ async function init(){
   $('kioskHardware').value=hardwareQuery||s.kioskHardware||'own';
   $('kioskLook').value=s.kioskLook||'Glam';
   $('smsAlbum').checked=s.smsAlbum!==false;
-  $('albumPrivacy').value=s.albumPrivacy||'private-link';
+  const privacy=s.albumPrivacy||'private-link'; const privacyInput=document.querySelector(`[name="albumPrivacy"][value="${privacy}"]`); if(privacyInput)privacyInput.checked=true;
   if(s.printFormat) $('printFormat').value=s.printFormat;
   if(s.date && /^\d{4}-\d{2}-\d{2}$/.test(s.date)) $('date').value=s.date;
   const currentProduct=product||s.signatureProduct||'cards';
@@ -78,7 +78,7 @@ form.addEventListener('submit',async e=>{
     smsPhoto:true,
     kioskLook:$('kioskLook').value,
     smsAlbum:$('smsAlbum').checked,
-    albumPrivacy:$('albumPrivacy').value
+    albumPrivacy:document.querySelector('[name="albumPrivacy"]:checked')?.value||'private-link'
   };
   await SSS.saveSettings(settings); SSS.toast('Event saved'); setTimeout(()=>location.href='dashboard.html',450);
 });
