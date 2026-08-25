@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Start Your Event | Sign. Selfie. Send.</title><link rel="icon" href="assets/img/favicon.svg"><link rel="stylesheet" href="assets/css/style.css"></head><body class="light-page start-page">
+<nav class="nav"><div class="shell nav-inner"><a class="brand" href="index.html"><img class="brand-mark" src="assets/img/favicon.svg" alt=""><span>Sign. Selfie. Send.</span></a><div class="nav-links"><a href="products.html">Products</a><a href="print-studio.html">Print Studio</a><a class="btn small" href="dashboard.html">My event</a></div></div></nav>
+<main class="setup-shell">
+  <div class="setup-intro"><div class="eyebrow">CREATE YOUR EVENT</div><h1>Set up the experience.</h1><p>Choose the physical signature format, selfie options and the extras you want at the event. You can change all of this later.</p></div>
+  <div class="builder-layout"><form id="eventBuilder" class="builder-form">
+
+  <section class="builder-step"><div class="builder-step-head"><span>1</span><div><h2>Your event</h2><p>What guests see when they scan.</p></div></div>
+    <div class="form-two"><div class="field"><label>Event / couple name</label><input id="couple" placeholder="Mia & Jordan"></div><div class="field"><label>Event date</label><input id="date" type="date"></div></div>
+    <div class="form-two"><div class="field"><label>Guest book title</label><input id="title" placeholder="Our Guest Book"></div><div class="field"><label>Short event code</label><input id="eventCode" maxlength="10" placeholder="MIAJORDAN"><div class="help">Printed below every signature QR as a fallback.</div></div></div>
+  </section>
+
+  <section class="builder-step"><div class="builder-step-head"><span>2</span><div><h2>How will people sign?</h2><p>The QR format can change later without changing the event.</p></div></div>
+    <div class="choice-cards" id="signatureChoices">
+      <label class="choice-card"><input type="radio" name="signatureProduct" value="print"><span class="choice-icon">▦</span><b>Print at home</b><span>Sheets, lines, cards or stickers from your printer.</span></label>
+      <label class="choice-card"><input type="radio" name="signatureProduct" value="cards" checked><span class="choice-icon">▤</span><b>Loose card kit</b><span>Guests sign, scan, then drop the signed card back in.</span></label>
+      <label class="choice-card"><input type="radio" name="signatureProduct" value="book"><span class="choice-icon">▥</span><b>Signature book</b><span>Numbered QR signing spaces already in the book.</span></label>
+    </div>
+    <div class="builder-callout"><b>Keep the original ink.</b><span>Loose cards are always collected after guests scan them. After the event, you scan the returned cards, sheets or book pages into their matching slots.</span></div>
+    <div class="form-two compact-row"><div class="field"><label>Signature spots</label><select id="slots"><option>24</option><option selected>48</option><option>72</option><option>96</option><option>120</option></select></div><div class="field"><label>Default printable format</label><select id="printFormat"><option value="boxes">4 large boxes / sheet</option><option value="lines">6 signature lines / sheet</option><option value="business">Business cards</option><option value="labels">QR sticker labels</option><option value="deck" selected>Deck cards</option><option value="fourbysix">4×6 cards</option></select></div></div>
+  </section>
+
+  <section class="builder-step"><div class="builder-step-head"><span>3</span><div><h2>Guest selfie</h2><p>Fast by default. Extra photos are there only if guests want them.</p></div></div>
+    <div class="form-two"><div class="field"><label>Saved photos per signature</label><select id="photoLimit"><option value="1">1 photo</option><option value="2">Up to 2 photos</option><option value="3" selected>Up to 3 photos</option></select><div class="help">Retakes are always unlimited before sending.</div></div><div class="toggle-field"><span><b>Photo filters</b><small>Natural, warm, B&W, film and pop</small></span><label class="switch"><input id="filters" type="checkbox" checked><i></i></label></div></div>
+    <div class="form-two"><div class="toggle-field"><span><b>Guest message</b><small>Optional note with the selfie</small></span><label class="switch"><input id="messages" type="checkbox" checked><i></i></label></div><div class="toggle-field"><span><b>Signature backup photo</b><small>Optional rear-camera snap of the signed card</small></span><label class="switch"><input id="signatureBackup" type="checkbox"><i></i></label></div></div>
+  </section>
+
+  <section class="builder-step"><div class="builder-step-head"><span>4</span><div><h2>Share the Smiles</h2><p>One event-wide QR for everyone’s camera roll.</p></div></div>
+    <div class="toggle-field feature-toggle"><span><b>Enable event photo uploads</b><small>Guests can take or upload photos that are not tied to a signature.</small></span><label class="switch"><input id="shareEnabled" type="checkbox" checked><i></i></label></div>
+    <div id="shareOptions" class="builder-subgrid"><div class="field"><label>Poster headline</label><select id="shareHeadline"><option>Share the smiles.</option><option>Share your point of view.</option><option>Did you see what I saw?</option><option>Everyone here. Every angle.</option><option>Upload your favorites.</option></select></div><div class="field"><label>Upload limit per visit</label><select id="shareUploadLimit"><option value="6">Up to 6 photos</option><option value="12" selected>Up to 12 photos</option><option value="20">Up to 20 photos</option></select></div></div>
+    <div class="poster-mini"><div><span id="posterPreviewKicker">MIA & JORDAN</span><b id="posterPreviewHeadline">Share the smiles.</b><small>Add your favorite photos from tonight.</small></div><img src="assets/qrs/event-share.png" alt="Event sharing QR"></div>
+  </section>
+
+  <section class="builder-step"><div class="builder-step-head"><span>5</span><div><h2>Selfie Station</h2><p>Optional kiosk mode for a tablet at the event.</p></div></div>
+    <div class="toggle-field feature-toggle"><span><b>Add kiosk mode</b><small>Guests take one selfie, enter their number, and get it by text.</small></span><label class="switch"><input id="kioskEnabled" type="checkbox"><i></i></label></div>
+    <div id="kioskOptions" class="builder-subgrid" hidden><div class="field"><label>Hardware</label><select id="kioskHardware"><option value="own">Use my own tablet</option><option value="rental">Add a tablet + stand rental</option><option value="full">Add tablet + stand + light kit</option></select></div><div class="field"><label>Kiosk look</label><select id="kioskLook"><option value="Natural">Classic</option><option value="Warm">Golden hour</option><option value="Mono">Black & white</option><option value="Film">Disposable film</option><option value="Glam" selected>Party glow</option></select><div class="help">Guests do not choose. Every kiosk selfie gets this look.</div></div></div>
+    <div id="smsAlbumWrap" class="toggle-field" hidden><span><b>Text the album later</b><small>The same number gets the event album link when you publish it.</small></span><label class="switch"><input id="smsAlbum" type="checkbox" checked><i></i></label></div>
+  </section>
+
+  <section class="builder-step"><div class="builder-step-head"><span>6</span><div><h2>Album, wall & review</h2><p>You stay in control of what becomes visible or printed.</p></div></div>
+    <div class="form-two"><div class="toggle-field"><span><b>Live photo wall</b><small>Show approved selfies and event uploads</small></span><label class="switch"><input id="liveWall" type="checkbox" checked><i></i></label></div><div class="field"><label>Album access</label><select id="albumPrivacy"><option value="private-link">Private link</option><option value="pin">Private link + PIN</option><option value="published">Open after I publish it</option></select></div></div>
+    <div class="owner-features"><span>Choose the book photo from up to 3</span><span>Swap selfies between signature slots</span><span>Swap scanned signatures between slots</span><span>Moderate event-wide uploads</span><span>Hide anything from the wall or book</span><span>Publish the album when you are ready</span></div>
+  </section>
+
+  <button class="btn create-event-btn" type="submit">Create my event →</button>
+  </form>
+
+  <aside class="builder-summary"><div class="summary-card"><img src="assets/img/party-selfie-1.jpg" alt="Party selfie"><div class="summary-body"><div class="eyebrow">YOUR EVENT</div><h3 id="summaryName">Mia & Jordan</h3><p id="summaryDate">Choose your date</p><div class="summary-line"><span>Signature spots</span><b id="summarySlots">48</b></div><div class="summary-line"><span>Photos per signature</span><b id="summaryPhotos">3</b></div><div class="summary-line"><span>Share QR</span><b id="summaryShare">On</b></div><div class="summary-line"><span>Selfie station</span><b id="summaryKiosk">Off</b></div><div class="summary-line"><span>Guest app</span><b>Never</b></div></div></div><div class="summary-next"><b>After setup</b><span>Print or order your QR pieces, put out a collection box for loose cards, then open the dashboard on event day.</span></div></aside>
+  </div>
+</main><div class="toast" id="toast"></div><script src="assets/js/core.js"></script><script src="assets/js/start.js"></script></body></html>

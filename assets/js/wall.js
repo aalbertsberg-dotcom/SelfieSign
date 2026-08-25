@@ -1,0 +1,4 @@
+const wall=document.getElementById('liveWall'),empty=document.getElementById('wallEmpty');
+function safe(s=''){return SSS.escapeHtml(s)}
+async function renderWall(){const settings=await SSS.getSettings();document.getElementById('wallEvent').textContent=settings.couple;let entries=(await SSS.getEntries()).filter(e=>e.selfies?.length&&!e.hiddenFromWall);if(settings.wallModeration)entries=entries.filter(e=>e.reviewStatus==='approved');empty.hidden=entries.length>0;wall.innerHTML=entries.slice().reverse().map((e,i)=>{const photo=SSS.primaryPhoto(e);return `<article class="live-tile" style="animation-delay:${Math.min(i*.04,.4)}s"><img src="${photo}" alt="${safe(e.names||'Guest selfie')}"><div class="label"><div><b>${safe(e.names||'Guest')}</b><br><small>${safe(e.message||'In the book ✓')}</small></div><span class="slot-chip">${e.slot}</span></div></article>`}).join('')}
+renderWall();setInterval(renderWall,5000);

@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Share Photos | Sign. Selfie. Send.</title><link rel="icon" href="assets/img/favicon.svg"><link rel="stylesheet" href="assets/css/style.css"></head><body class="share-page-body">
+<main class="share-mobile-shell">
+<header class="guest-brand"><img src="assets/img/favicon.svg" alt=""><span>Sign. Selfie. Send.</span><span class="guest-slot">EVENT PHOTOS</span></header>
+<section id="shareForm">
+  <div class="share-guest-hero"><div class="eyebrow">ADD YOUR VIEW OF THE DAY</div><h1 id="shareHeadlineText">Share the smiles.</h1><p id="sharePromptText">Add your favorite photos from tonight.</p><div class="share-event-name" id="shareEventName">Mia & Jordan</div></div>
+  <section class="share-upload-card">
+    <div class="share-drop"><div class="camera-ring small-ring">＋</div><h2>Add photos</h2><p>Take one now or choose a bunch from your camera roll.</p><div class="camera-actions-v3"><label class="btn">Take a photo<input id="shareCamera" type="file" accept="image/*" capture="environment" hidden></label><label class="btn light">Choose photos<input id="shareFiles" type="file" accept="image/*" multiple hidden></label></div></div>
+    <div id="shareCount" class="photo-counter">0 photos selected</div><div id="shareThumbs" class="share-thumbs"></div>
+  </section>
+  <section class="guest-details-v3"><div class="guest-step-label"><span>OPTIONAL</span><b>Who caught these?</b></div><div class="field"><label>Name(s)</label><input id="shareNames" placeholder="The Parkers"></div><div class="field"><label>Caption</label><textarea id="shareMessage" maxlength="180" placeholder="Dance floor from our table ✨"></textarea></div></section>
+  <section class="guest-details-v3"><div class="guest-step-label"><span>OPTIONAL</span><b>Get the album later</b></div><div class="field"><label>Mobile number</label><input id="sharePhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555"><div class="help">Used only to text the event album link if you opt in.</div></div><label class="consent-check"><input id="shareAlbumOptIn" type="checkbox"><span>Text me the event album when it is published.</span></label></section>
+  <div class="guest-submit-wrap"><button id="shareSubmit" class="btn full guest-submit">Add to the event →</button><p>Uploads are private to this event until the host publishes them.</p></div>
+</section>
+<section id="shareDone" class="guest-done-v3" hidden><div class="sent-burst">✓</div><div class="eyebrow">ADDED</div><h1>Nice shot.</h1><p>Your photos are in the event collection.</p><div id="shareDonePhotos" class="done-photos wide-done"></div><div class="hero-actions centered-actions"><button id="shareMore" class="btn">Add more photos</button><a class="btn light" href="album.html?event=demo">View album</a></div></section>
+</main><div class="toast" id="toast"></div><script src="assets/js/core.js"></script><script src="assets/js/share.js"></script></body></html>

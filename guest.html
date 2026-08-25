@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sign. Selfie. Send.</title><link rel="icon" href="assets/img/favicon.svg"><link rel="stylesheet" href="assets/css/style.css"></head><body class="guest-page-v3">
+<main class="guest-mobile-shell">
+<header class="guest-brand"><img src="assets/img/favicon.svg" alt=""><span>Sign. Selfie. Send.</span><span id="slotLabel" class="guest-slot">Your spot</span></header>
+<section id="usedNotice" class="used-notice" hidden><b>This QR already has a memory.</b><span>If this is yours, you can replace or add photos below. If not, grab another card.</span></section>
+<section id="guestForm">
+<div class="guest-event"><div class="eyebrow">YOU SIGNED. NOW THE FUN PART.</div><h1 id="eventName">Your event</h1><p id="eventDate"></p></div>
+<section class="camera-card-v3">
+  <div class="photo-stage-v3" id="photoStage"><div id="captureEmpty" class="camera-empty-v3"><div class="camera-ring">📸</div><h2>Take your selfie</h2><p>Retake it until you like it.</p></div><img id="previewImage" hidden alt="Your selfie"></div>
+  <div id="photoCounter" class="photo-counter">Photo 1 of up to 3</div>
+  <div id="filterArea"><div class="filter-row-v3"><button type="button" class="filter active" data-filter="Natural">Natural</button><button type="button" class="filter" data-filter="Warm">Warm</button><button type="button" class="filter" data-filter="Mono">B&W</button><button type="button" class="filter" data-filter="Film">Film</button><button type="button" class="filter" data-filter="Glam">Pop</button></div></div>
+  <div class="camera-actions-v3"><label class="btn guest-camera-btn"><span id="cameraButtonText">Take selfie</span><input id="selfieInput" type="file" accept="image/*" capture="user" hidden></label><label class="btn light guest-upload-btn">Choose photo<input id="galleryInput" type="file" accept="image/*" hidden></label></div>
+  <div id="editPhotoActions" class="photo-edit-actions" hidden><button type="button" id="retakePhoto" class="text-action">↻ Retake this one</button><button type="button" id="removePhoto" class="text-action danger">Remove</button></div>
+  <div id="photoThumbs" class="photo-thumbs-v3"></div>
+  <button id="addPhoto" type="button" class="add-photo-btn" hidden>+ Add another photo</button>
+</section>
+
+<section class="guest-details-v3">
+  <div class="guest-step-label"><span>OPTIONAL</span><b>Make it personal</b></div>
+  <div class="field"><label>Your name(s)</label><input id="names" autocomplete="name" placeholder="Avery & Chris"><div class="help">Helpful for the finished book, but you can skip it.</div></div>
+  <div class="field" id="messageField"><label>A note for them</label><textarea id="message" maxlength="240" placeholder="Best night ever. We love you both!"></textarea><div class="help">Optional · 240 characters max</div></div>
+</section>
+
+<section id="signatureCapture" class="signature-capture-v3" hidden>
+  <div><div class="guest-step-label"><span id="signatureOptional">OPTIONAL</span><b>Snap the signature you just wrote</b></div><p>This is only a backup photo. Your host still keeps and scans the original signature after the event.</p></div>
+  <div id="signaturePreviewWrap" class="signature-preview-v3" hidden><img id="signaturePreview" alt="Signature photo"></div>
+  <div class="signature-actions"><label class="btn light">Photograph my signature<input id="signatureInput" type="file" accept="image/*" capture="environment" hidden></label><button id="removeSignature" type="button" class="text-action" hidden>Remove</button></div>
+</section>
+
+<div class="guest-submit-wrap"><button id="submitGuest" class="btn full guest-submit">Send my memory →</button><p>Private to this event. No account needed.</p></div>
+</section>
+
+<section id="done" class="guest-done-v3" hidden><div class="sent-burst">✓</div><div class="eyebrow">SENT</div><h1>You're in.</h1><p>Your selfie is linked to the signature spot you scanned.</p><div id="returnCardNote" class="return-card-note" hidden><b>One last thing:</b> drop your signed card in the collection box before you go.</div><div id="donePhotos" class="done-photos"></div><button id="editAfterSend" class="btn light">Change my entry</button></section>
+</main><div class="toast" id="toast"></div><script src="assets/js/core.js"></script><script src="assets/js/guest.js"></script></body></html>
