@@ -1,5 +1,11 @@
 # Ink & Flash
 
+Current build: v11
+
+Flash Station uses the real browser camera. It prefers the front camera, falls back to any available camera, can switch between multiple cameras, and reports permission/busy/no-camera errors separately.
+
+# Ink & Flash
+
 Production-facing front end for Ink & Flash, the event memory brand behind “Sign. Selfie. Send.”
 
 
