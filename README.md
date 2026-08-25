@@ -74,3 +74,7 @@ GitHub Pages is the shareable front-end preview. It uses browser-local storage b
 ## v10 Flash Station behavior
 
 Flash Station is production-facing UI, not a placeholder experience. On localhost or HTTPS it requests the real front-facing camera. No stock fallback image is shown. If permission is blocked, the station displays an explicit camera-permission state. The kiosk flow is a quick selfie, optional phone number, then automatic reset. SMS delivery remains a backend integration.
+
+
+## v13
+The products page now leads with the finished Ink & Flash keepsake book. Book Studio can include approved signature/selfie pairs plus Flash Share and Flash Station photos, with interleaved or end-of-book event photo sections.
