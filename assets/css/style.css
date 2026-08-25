@@ -228,3 +228,10 @@ input,select,textarea,button{max-width:100%}
   .spread{border-radius:10px}
   .book-page{min-height:320px;padding:18px}
 }
+
+/* v8 Flash Station queue-first flow */
+.optional-label{display:inline-flex;margin-left:6px;padding:2px 7px;border-radius:999px;background:rgba(255,79,154,.12);color:var(--pink2);font-size:9px;letter-spacing:.7px;vertical-align:middle}
+.kiosk-turn-note{display:block;margin-top:10px;color:#aaa3b5;font-size:12px}
+.booth-result .kiosk-simple-copy{margin-bottom:14px}
+#boothSend{margin-top:2px}
+@media(min-width:761px){#station .kiosk-flow{grid-template-columns:repeat(3,1fr)}}

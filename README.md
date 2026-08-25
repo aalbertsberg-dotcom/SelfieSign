@@ -50,7 +50,7 @@ A starter Supabase schema remains under `supabase/schema.sql`.
 
 
 ## Kiosk flow
-The kiosk is intentionally simple: take selfie → retake if needed → enter mobile number → text selfie → auto-reset. The event owner selects one kiosk look in event setup; guests never choose filters or modes.
+The kiosk is intentionally fast: one selfie per turn → optional mobile number → save/text → auto-reset for the next guest. There is no retake screen. If someone wants another photo, they take another turn. The event owner selects one kiosk look in event setup; guests never choose filters or modes.
 
 ## GitHub Pages preview
 

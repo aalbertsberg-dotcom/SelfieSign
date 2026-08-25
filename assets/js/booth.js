@@ -46,30 +46,33 @@ $('boothCapture').onclick=async()=>{
   const source=usingFallback?fallback:video,w=usingFallback?(fallback.naturalWidth||900):(video.videoWidth||900),h=usingFallback?(fallback.naturalHeight||1200):(video.videoHeight||1200);
   canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d');ctx.filter=filterCss();
   if(!usingFallback){ctx.translate(w,0);ctx.scale(-1,1)}
-  ctx.drawImage(source,0,0,w,h);captured=canvas.toDataURL('image/jpeg',.9);canvas.hidden=false;video.hidden=true;fallback.hidden=true;showResult();setTimeout(()=>$('boothPhone').focus(),180)
+  ctx.drawImage(source,0,0,w,h);captured=canvas.toDataURL('image/jpeg',.9);canvas.hidden=false;video.hidden=true;fallback.hidden=true;showResult()
 };
-$('boothRetake').onclick=()=>{captured=null;canvas.hidden=true;(usingFallback?fallback:video).hidden=false;$('boothPhone').value='';showReady()};
 function reset(){
-  clearTimeout(resetTimer);captured=null;canvas.hidden=true;$('boothThanks').hidden=true;overlay.hidden=true;$('boothPhone').value='';showReady();
+  clearTimeout(resetTimer);captured=null;canvas.hidden=true;$('boothThanks').hidden=true;overlay.hidden=true;$('boothPhone').value='';$('boothSend').textContent='Done · next guest →';showReady();
   if(stream){usingFallback=false;video.hidden=false;fallback.hidden=true;video.play().catch(()=>{})}else{fallback.hidden=false;usingFallback=true}
 }
-$('boothNext').onclick=reset;
-$('boothPhone').addEventListener('input',e=>{const pos=e.target.selectionStart;e.target.value=formatPhone(e.target.value)});
+$('boothPhone').addEventListener('input',e=>{e.target.value=formatPhone(e.target.value);$('boothSend').textContent=digits(e.target.value)?'Text it & done →':'Done · next guest →'});
 $('boothPhone').addEventListener('keydown',e=>{if(e.key==='Enter'){$('boothSend').click()}});
 $('boothSend').onclick=async()=>{
   if(!captured)return SSS.toast('Take a selfie first');
-  const phone=$('boothPhone').value.trim();if(!validPhone(phone))return SSS.toast('Enter a valid mobile number');
+  const phone=$('boothPhone').value.trim();
+  if(phone&&!validPhone(phone))return SSS.toast('Enter a full mobile number or leave it blank');
   const entries=await SSS.getEntries();const slot=SSS.nextGallerySlot(entries);
-  await SSS.upsertEntry({kind:'gallery',slot,names:'Selfie Station',message:'',selfies:[captured],primarySelfie:0,filter:currentFilter,phone,albumOptIn:settings.smsAlbum!==false,source:'kiosk',reviewStatus:settings.wallModeration?'pending':'approved'});
+  await SSS.upsertEntry({kind:'gallery',slot,names:'Selfie Station',message:'',selfies:[captured],primarySelfie:0,filter:currentFilter,phone,albumOptIn:Boolean(phone)&&settings.smsAlbum!==false,source:'kiosk',reviewStatus:settings.wallModeration?'pending':'approved'});
   canvas.hidden=true;hideControls();$('boothThanks').hidden=false;
   const local=location.hostname==='localhost'||location.hostname==='127.0.0.1'||location.protocol==='file:'||location.hostname.endsWith('github.io');
-  $('boothThanksText').textContent=local?'Your selfie is saved. Texting turns on with the production backend.':(settings.smsAlbum!==false?'Check your phone. We’ll send the event album here later, too.':'Check your phone — your selfie is on the way.');
-  resetTimer=setTimeout(reset,4200)
+  if(phone){
+    $('boothThanksText').textContent=local?'Saved. Texting turns on with the production backend. Next guest, you’re up.': 'Saved. Check your phone. Next guest, you’re up.';
+  }else{
+    $('boothThanksText').textContent='Saved to the event. Next guest, you’re up.';
+  }
+  resetTimer=setTimeout(reset,1900)
 };
 (async()=>{
   settings=await SSS.getSettings();currentFilter=settings.kioskLook||'Glam';if(!filterMap[currentFilter])currentFilter='Glam';
   $('boothThemeName').textContent=themeNames[currentFilter]||'Party glow';
-  $('boothPhoneHelp').textContent=settings.smsAlbum!==false?"We'll text this selfie now and the event album link when it's ready.":"We'll text this selfie to you now.";
+  $('boothPhoneHelp').textContent=settings.smsAlbum!==false?"Optional — enter it to get this selfie now and the event album when it’s published.":"Optional — enter it if you want this selfie texted to you.";
   const preview=location.hostname==='localhost'||location.hostname==='127.0.0.1'||location.protocol==='file:'||location.hostname.endsWith('github.io');
   if(preview)$('localSmsBadge').hidden=false;
   apply();showReady();

@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flash Station | Ink & Flash</title><link rel="icon" href="assets/img/favicon.svg"><link rel="stylesheet" href="assets/css/style.css"></head><body class="booth-body">
 <main class="booth-shell"><div class="booth-top"><a class="brand" href="index.html"><img class="brand-mark" src="assets/img/favicon.svg" alt=""><span>Ink & Flash</span></a><div class="booth-top-right"><span id="localSmsBadge" class="slot-chip" hidden>PREVIEW · TEXTING OFF</span><span class="slot-chip">FLASH STATION</span><a class="btn light small" href="dashboard.html">Exit</a></div></div>
-<div class="booth-ui"><section class="booth-camera"><video id="boothVideo" autoplay muted playsinline hidden></video><canvas id="boothCanvas" hidden></canvas><img id="boothFallback" src="assets/img/party-selfie-1.jpg" alt="Selfie station sample"><div id="countdown" class="countdown" hidden></div><div id="boothOverlay" class="booth-overlay"><div class="booth-start"><div class="ring">📸</div><div class="eyebrow">SELFIE STATION</div><h1>Tap to<br><span class="scribble">start.</span></h1><button id="startBooth" class="btn">Enable camera</button><p class="muted">One look. One selfie. Unlimited retakes.</p></div></div><div id="boothThanks" class="booth-thanks" hidden><div class="sent-burst">✓</div><h2>Sent!</h2><p id="boothThanksText">Your selfie is on its way.</p><button id="boothNext" class="btn">Next guest</button></div></section>
+<div class="booth-ui"><section class="booth-camera"><video id="boothVideo" autoplay muted playsinline hidden></video><canvas id="boothCanvas" hidden></canvas><img id="boothFallback" src="assets/img/party-selfie-1.jpg" alt="Selfie station sample"><div id="countdown" class="countdown" hidden></div><div id="boothOverlay" class="booth-overlay"><div class="booth-start"><div class="ring">📸</div><div class="eyebrow">SELFIE STATION</div><h1>Tap to<br><span class="scribble">start.</span></h1><button id="startBooth" class="btn">Enable camera</button><p class="muted">One look. One photo per turn. Keep the line moving.</p></div></div><div id="boothThanks" class="booth-thanks" hidden><div class="sent-burst">✓</div><h2>Saved!</h2><p id="boothThanksText">Next guest, you’re up.</p><small class="kiosk-turn-note">Want another? Hop back in line for another turn.</small></div></section>
 <aside class="booth-controls">
   <div id="boothReady" class="kiosk-simple-step">
     <div class="eyebrow">1 · TAKE YOUR SELFIE</div>
@@ -11,11 +11,11 @@
     <p class="kiosk-under-shutter">Tap the button when you're ready.</p>
   </div>
   <div id="boothResult" class="booth-result" hidden>
-    <div class="eyebrow">2 · GET YOUR SELFIE</div>
-    <h2>Want this one?</h2>
-    <button id="boothRetake" class="btn light full">↻ Retake</button>
-    <div class="field kiosk-phone-field"><label>Mobile number</label><input id="boothPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555" required><div id="boothPhoneHelp" class="help">We'll text this selfie to you now.</div></div>
-    <button id="boothSend" class="btn full">Text my selfie →</button>
-    <p class="kiosk-privacy-note">Your number is only used for photo delivery for this event.</p>
+    <div class="eyebrow">2 · THAT’S YOUR SHOT</div>
+    <h2>Nice one.</h2>
+    <p class="kiosk-simple-copy">Want a copy? Add your number. Otherwise just tap done so the next guest can jump in.</p>
+    <div class="field kiosk-phone-field"><label>Mobile number <span class="optional-label">optional</span></label><input id="boothPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555"><div id="boothPhoneHelp" class="help">Leave it blank if you don’t want a text.</div></div>
+    <button id="boothSend" class="btn full">Done · next guest →</button>
+    <p class="kiosk-privacy-note">Your selfie is saved either way. If you enter a number, it is only used for this event’s photo delivery.</p>
   </div>
 </aside></div></main><div class="toast" id="toast"></div><script src="assets/js/core.js"></script><script src="assets/js/booth.js"></script></body></html>
